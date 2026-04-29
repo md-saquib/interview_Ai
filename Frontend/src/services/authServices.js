@@ -2,7 +2,7 @@
 
 import axios from "axios";
 
-const API_URL = 'http://localhost:3000/api/auth';
+const API_URL = 'https://interview-ai-vwq3.onrender.com/api/auth';
 
 export const register = async (credentials) => {
     try {

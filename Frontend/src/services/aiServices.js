@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/interview";
+const API_URL = "https://interview-ai-vwq3.onrender.com/api/interview";
 
 
 export const generateInterviewReport = async (jobDescription, resume, selfDescription, selectedModel) => {
@@ -76,4 +76,4 @@ export const downloadResumePdf = async (interviewReportId) => {
     } catch (error) {
         throw new Error(error.response?.data?.message || 'Failed to download resume PDF');
     }
-};
+};
