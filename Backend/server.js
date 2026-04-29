@@ -12,7 +12,7 @@ const cors = require('cors');
 app.use(cors({
     // IMPORTANT: origin: "*" aur credentials: true saath kaam nahi karta (browser block karta hai)
     // Isliye apna React frontend ka exact origin daal
-    origin: "http://localhost:5173",
+    origin: "https://interview-ai-vwq3.onrender.com",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"]
