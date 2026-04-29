@@ -14,20 +14,31 @@ const Home = () => {
     const { setInterviewReport, loading, setLoading } = useInterview();
     const navigate = useNavigate();
 
+    // For model selection
+    const GEMINI_MODELS = [
+        { id: "gemini-2.5-flash", name: "Gemini 2.5 Flash (Fastest)", description: "Best for quick analysis" },
+        { id: "gemini-2.5-pro", name: "Gemini 2.5 Pro (Advanced)", description: "Best for complex reasoning" },
+        { id: "gemini-1.5-flash", name: "Gemini 1.5 Flash", description: "Ultra-low cost" },
+        { id: "gemini-1.5-pro", name: "Gemini 1.5 Pro (Stable)", description: "Highly reliable performance" },
+    ];
+    const [selectedModel, setSelectedModel] = useState(GEMINI_MODELS[0].id);
+    console.log(selectedModel);
+
+    // API Call by user  
     const handleGenerate = async (e) => {
         e.preventDefault();
         setLoading(true);
         setError('');
 
         try {
-            const response = await generateInterviewReport(jobDescription, resume, selfDescription);
+            const response = await generateInterviewReport(jobDescription, resume, selfDescription, selectedModel);
             setInterviewReport(response);
             navigate(`/report/${response._id}`);
         } catch (error) {
             if (error === "Unauthorized user, please login first" || error?.includes?.("Unauthorized")) {
                 navigate('/login');
             } else {
-                setError(error);
+                setError(error?.response?.data?.message || error?.message || (typeof error === 'string' ? error : "An unknown error occurred"));
             }
         } finally {
             setLoading(false);
@@ -61,7 +72,7 @@ const Home = () => {
                         {error && (
                             <div className="bg-red-500/10 text-red-400 border border-red-500/20 p-4 rounded-xl mb-6 text-sm flex items-start gap-3">
                                 <span className="text-red-400 mt-0.5">⚠</span>
-                                <span>{error}</span>
+                                <span className='break-all'>{error}</span>
                             </div>
                         )}
 
@@ -117,6 +128,26 @@ const Home = () => {
                                     onChange={(e) => setSelfDescription(e.target.value)}
                                     required
                                 />
+                            </div>
+
+                            {/* Select Gimini Model */}
+                            <div className="flex flex-col gap-2 w-full max-w-xs">
+
+                                <label className="text-sm font-semibold text-gray-700">Select AI Model</label>
+                                <select
+                                    value={selectedModel}
+                                    onChange={(e) => setSelectedModel(e.target.value)}
+                                    className="p-2 bg-[#070b14] border border-white/[0.08] text-slate-200 text-sm  focus:ring-2 focus:ring-blue-300 transition-all outline-none"
+                                >
+                                    {GEMINI_MODELS.map((model) => (
+                                        <option key={model.id} value={model.id}>
+                                            {model.name}
+                                        </option>
+                                    ))}
+                                </select>
+                                <p className="text-xs text-gray-500 italic">
+                                    {GEMINI_MODELS.find(m => m.id === selectedModel)?.description}
+                                </p>
                             </div>
 
                             {/* Submit Button */}
