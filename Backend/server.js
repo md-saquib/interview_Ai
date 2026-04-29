@@ -12,10 +12,10 @@ const cors = require('cors');
 app.use(cors({
     // IMPORTANT: origin: "*" aur credentials: true saath kaam nahi karta (browser block karta hai)
     // Isliye apna React frontend ka exact origin daal
-    origin: "https://interview-ai-vwq3.onrender.com",
+    origin: ["https://job-interview-ai.netlify.app", "http://localhost:5173"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    allowedHeaders: ["Content-Type", "Authorization"] 
 }))
 
 // Middleware to convert JSON to object
