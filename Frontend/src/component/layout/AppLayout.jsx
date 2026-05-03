@@ -46,18 +46,18 @@ const AppLayout = ({ children }) => {
     };
 
     return (
-        <div className="min-h-screen bg-[#070b14] flex flex-col font-sans">
+        <div className="min-h-screen bg-zinc-950 flex flex-col font-sans">
             {/* ───── Top Nav Bar ───── */}
-            <header className="h-14 bg-[#0d1424]/80 border-b border-white/[0.06] backdrop-blur-md flex items-center justify-between px-4 md:px-6 sticky top-0 z-30">
+            <header className="h-14 bg-zinc-900/80 border-b border-zinc-800 backdrop-blur-md flex items-center justify-between px-4 md:px-6 sticky top-0 z-30">
                 {/* Left: Logo */}
                 <div className="flex items-center gap-2.5">
                     <button
-                        className="md:hidden p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/5 mr-1 transition-colors"
+                        className="md:hidden p-1.5 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 mr-1 transition-colors"
                         onClick={() => setSidebarOpen(!sidebarOpen)}
                     >
                         {sidebarOpen ? <X size={18} /> : <Menu size={18} />}
                     </button>
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/20">
+                    <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-lg shadow-red-900/20">
                         <BrainCircuit size={16} className="text-white" />
                     </div>
                     <span className="font-bold text-white text-base tracking-tight">InterviewAI</span>
@@ -69,10 +69,10 @@ const AppLayout = ({ children }) => {
                     onClick={handleProfileClick}
                 >
                     <div className="hidden sm:block text-right">
-                        <p className="text-xs font-semibold text-slate-200 leading-none">{userData ? userData.name : 'Guest'}</p>
-                        <p className="text-[10px] text-slate-500 mt-0.5">Free Plan</p>
+                        <p className="text-xs font-semibold text-zinc-200 leading-none">{userData ? userData.name : 'Guest'}</p>
+                        <p className="text-[10px] text-zinc-500 mt-0.5">Free Plan</p>
                     </div>
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 flex items-center justify-center overflow-hidden border-2 border-white/10 group-hover:border-blue-400/50 transition-all">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-red-500 to-rose-600 flex items-center justify-center overflow-hidden border-2 border-white/10 group-hover:border-red-400/50 transition-all">
                         <img
                             src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix"
                             alt="avatar"
@@ -94,15 +94,15 @@ const AppLayout = ({ children }) => {
 
                 <aside className={`
                     fixed md:static top-14 left-0 h-[calc(100vh-3.5rem)] md:h-auto
-                    w-64 bg-[#0d1424] border-r border-white/[0.06]
+                    w-64 bg-zinc-900 border-r border-zinc-800
                     flex flex-col z-20 transition-transform duration-300
                     ${sidebarOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
                 `}>
                     {/* Home Button */}
-                    <div className="p-3 border-b border-white/[0.06]">
+                    <div className="p-3 border-b border-zinc-800">
                         <button
                             onClick={() => { navigate('/'); setSidebarOpen(false); }}
-                            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl bg-blue-600/10 hover:bg-blue-600/20 border border-blue-500/20 hover:border-blue-500/40 text-blue-400 hover:text-blue-300 transition-all group"
+                            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl bg-red-500/10 hover:bg-red-500/20 border border-red-500/20 hover:border-red-500/40 text-red-400 hover:text-red-300 transition-all group"
                         >
                             <Home size={15} />
                             <span className="text-sm font-semibold">New Report</span>
@@ -112,7 +112,7 @@ const AppLayout = ({ children }) => {
 
                     {/* History Label */}
                     <div className="px-4 pt-4 pb-2">
-                        <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-600">History</p>
+                        <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-zinc-500">History</p>
                     </div>
 
                     {/* Report History List */}
@@ -122,14 +122,14 @@ const AppLayout = ({ children }) => {
                                 <button
                                     key={item._id || i}
                                     onClick={() => { navigate(`/report/${item._id}`); setSidebarOpen(false); }}
-                                    className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-white/[0.04] border border-transparent hover:border-white/[0.06] transition-all group"
+                                    className="w-full text-left px-3 py-2.5 rounded-xl hover:bg-zinc-800/50 border border-transparent hover:border-zinc-700/50 transition-all group"
                                 >
-                                    <p className="text-xs font-medium text-slate-300 group-hover:text-white line-clamp-1 transition-colors">
+                                    <p className="text-xs font-medium text-zinc-300 group-hover:text-white line-clamp-1 transition-colors">
                                         {item.title || 'Untitled Report'}
                                     </p>
                                     <div className="flex items-center gap-1 mt-1">
-                                        <Clock size={10} className="text-slate-600" />
-                                        <span className="text-[10px] text-slate-600">
+                                        <Clock size={10} className="text-zinc-500" />
+                                        <span className="text-[10px] text-zinc-500">
                                             {formatDate(item.createdAt || item.analysisDate)}
                                         </span>
                                     </div>
@@ -137,16 +137,16 @@ const AppLayout = ({ children }) => {
                             ))
                         ) : (
                             <div className="px-3 py-8 text-center">
-                                <p className="text-xs text-slate-600">No reports yet</p>
-                                <p className="text-[10px] text-slate-700 mt-1">Generate your first report</p>
+                                <p className="text-xs text-zinc-500">No reports yet</p>
+                                <p className="text-[10px] text-zinc-600 mt-1">Generate your first report</p>
                             </div>
                         )}
                     </div>
                     {/* Sidebar Footer — Logout */}
-                    <div className="p-3 border-t border-white/[0.06]">
+                    <div className="p-3 border-t border-zinc-800">
                         <button
                             onClick={handleLogout}
-                            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-red-500/10 border border-transparent hover:border-red-500/20 text-slate-500 hover:text-red-400 transition-all group"
+                            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-red-500/10 border border-transparent hover:border-red-500/20 text-zinc-400 hover:text-red-400 transition-all group"
                         >
                             <LogOut size={15} />
                             <span className="text-sm font-medium">Logout</span>

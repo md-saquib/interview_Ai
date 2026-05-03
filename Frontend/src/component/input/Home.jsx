@@ -17,9 +17,6 @@ const Home = () => {
     // For model selection
     const GEMINI_MODELS = [
         { id: "gemini-2.5-flash", name: "Gemini 2.5 Flash (Fastest)", description: "Best for quick analysis" },
-        { id: "gemini-2.5-pro", name: "Gemini 2.5 Pro (Advanced)", description: "Best for complex reasoning" },
-        { id: "gemini-1.5-flash", name: "Gemini 1.5 Flash", description: "Ultra-low cost" },
-        { id: "gemini-1.5-pro", name: "Gemini 1.5 Pro (Stable)", description: "Highly reliable performance" },
     ];
     const [selectedModel, setSelectedModel] = useState(GEMINI_MODELS[0].id);
     console.log(selectedModel);
@@ -47,26 +44,26 @@ const Home = () => {
 
     return (
         <AppLayout>
-            <div className="min-h-full flex items-center justify-center p-6 md:p-10">
+            <div className="min-h-full flex items-center justify-center p-6 md:p-10 bg-zinc-950">
                 <div className="w-full max-w-2xl">
 
                     {/* Hero Text */}
                     <div className="mb-8 text-center">
-                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-4">
-                            <Sparkles size={12} className="text-blue-400" />
-                            <span className="text-[11px] font-bold text-blue-400 uppercase tracking-widest">AI-Powered</span>
+                        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 mb-4">
+                            <Sparkles size={12} className="text-red-400" />
+                            <span className="text-[11px] font-bold text-red-400 uppercase tracking-widest">AI-Powered</span>
                         </div>
                         <h1 className="text-3xl md:text-4xl font-black text-white leading-tight tracking-tight">
                             Generate Your
-                            <span className="bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent"> Interview Report</span>
+                            <span className="bg-gradient-to-r from-red-500 to-rose-400 bg-clip-text text-transparent"> Interview Report</span>
                         </h1>
-                        <p className="text-slate-400 mt-3 text-sm leading-relaxed">
+                        <p className="text-zinc-400 mt-3 text-sm leading-relaxed">
                             Provide your job details and resume to get a personalized technical assessment, skill gap analysis, and a 7-day prep roadmap.
                         </p>
                     </div>
 
                     {/* Form Card */}
-                    <div className="bg-[#0d1424] border border-white/[0.07] rounded-2xl p-6 md:p-8 shadow-2xl">
+                    <div className="bg-zinc-900/80 backdrop-blur-xl border border-red-900/30 rounded-2xl p-6 md:p-8 shadow-2xl shadow-red-900/10">
 
                         {/* Error */}
                         {error && (
@@ -80,12 +77,12 @@ const Home = () => {
 
                             {/* Job Description */}
                             <div>
-                                <label className="flex items-center gap-2 text-[11px] font-bold text-slate-400 mb-2 uppercase tracking-widest">
-                                    <Briefcase size={12} className="text-blue-500" />
+                                <label className="flex items-center gap-2 text-[11px] font-bold text-zinc-400 mb-2 uppercase tracking-widest">
+                                    <Briefcase size={12} className="text-red-500" />
                                     Job Description
                                 </label>
                                 <textarea
-                                    className="w-full h-32 bg-[#070b14] border border-white/[0.08] text-slate-200 text-sm p-4 rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 outline-none transition duration-200 resize-none placeholder-slate-600"
+                                    className="w-full h-32 bg-zinc-950/50 border border-zinc-800 text-zinc-200 text-sm p-4 rounded-xl focus:ring-2 focus:ring-red-500/50 focus:border-red-500/50 outline-none transition duration-200 resize-none placeholder-zinc-600"
                                     placeholder="Paste the target job description here..."
                                     onChange={(e) => setJobDescription(e.target.value)}
                                     required
@@ -94,8 +91,8 @@ const Home = () => {
 
                             {/* Resume Upload */}
                             <div>
-                                <label className="flex items-center gap-2 text-[11px] font-bold text-slate-400 mb-2 uppercase tracking-widest">
-                                    <FileText size={12} className="text-blue-500" />
+                                <label className="flex items-center gap-2 text-[11px] font-bold text-zinc-400 mb-2 uppercase tracking-widest">
+                                    <FileText size={12} className="text-red-500" />
                                     Resume (Upload .pdf)
                                 </label>
                                 <div className="relative">
@@ -104,26 +101,26 @@ const Home = () => {
                                         accept=".pdf"
                                         name="resume"
                                         onChange={(e) => setResume(e.target.files[0])}
-                                        className="block w-full text-sm text-slate-400
+                                        className="block w-full text-sm text-zinc-400
                                             file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0
                                             file:text-xs file:font-bold file:uppercase file:tracking-wide
-                                            file:bg-blue-500/10 file:text-blue-400
-                                            hover:file:bg-blue-500/20 hover:file:text-blue-300
+                                            file:bg-red-500/10 file:text-red-400
+                                            hover:file:bg-red-500/20 hover:file:text-red-300
                                             transition duration-200 cursor-pointer
-                                            border border-white/[0.08] rounded-xl p-3
-                                            bg-[#070b14] file:transition-all"
+                                            border border-zinc-800 rounded-xl p-3
+                                            bg-zinc-950/50 file:transition-all"
                                     />
                                 </div>
                             </div>
 
                             {/* Self Description */}
                             <div>
-                                <label className="flex items-center gap-2 text-[11px] font-bold text-slate-400 mb-2 uppercase tracking-widest">
-                                    <User size={12} className="text-blue-500" />
+                                <label className="flex items-center gap-2 text-[11px] font-bold text-zinc-400 mb-2 uppercase tracking-widest">
+                                    <User size={12} className="text-red-500" />
                                     Self Description
                                 </label>
                                 <textarea
-                                    className="w-full h-24 bg-[#070b14] border border-white/[0.08] text-slate-200 text-sm p-4 rounded-xl focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 outline-none transition duration-200 resize-none placeholder-slate-600"
+                                    className="w-full h-24 bg-zinc-950/50 border border-zinc-800 text-zinc-200 text-sm p-4 rounded-xl focus:ring-2 focus:ring-red-500/50 focus:border-red-500/50 outline-none transition duration-200 resize-none placeholder-zinc-600"
                                     placeholder="Add a brief summary about yourself, projects, and goals..."
                                     onChange={(e) => setSelfDescription(e.target.value)}
                                     required
@@ -133,11 +130,11 @@ const Home = () => {
                             {/* Select Gimini Model */}
                             <div className="flex flex-col gap-2 w-full max-w-xs">
 
-                                <label className="text-sm font-semibold text-gray-700">Select AI Model</label>
+                                <label className="text-sm font-semibold text-zinc-300">Select AI Model</label>
                                 <select
                                     value={selectedModel}
                                     onChange={(e) => setSelectedModel(e.target.value)}
-                                    className="p-2 bg-[#070b14] border border-white/[0.08] text-slate-200 text-sm  focus:ring-2 focus:ring-blue-300 transition-all outline-none"
+                                    className="p-2 bg-zinc-950/50 border border-zinc-800 text-zinc-200 text-sm focus:ring-2 focus:ring-red-500/50 rounded-lg transition-all outline-none"
                                 >
                                     {GEMINI_MODELS.map((model) => (
                                         <option key={model.id} value={model.id}>
@@ -145,7 +142,7 @@ const Home = () => {
                                         </option>
                                     ))}
                                 </select>
-                                <p className="text-xs text-gray-500 italic">
+                                <p className="text-xs text-zinc-500 italic">
                                     {GEMINI_MODELS.find(m => m.id === selectedModel)?.description}
                                 </p>
                             </div>
@@ -156,13 +153,13 @@ const Home = () => {
                                 disabled={loading}
                                 className={`
                                     w-full h-13 mt-2 relative overflow-hidden
-                                    bg-gradient-to-r from-blue-600 to-indigo-600
-                                    hover:from-blue-500 hover:to-indigo-500
+                                    bg-gradient-to-r from-red-600 to-rose-600
+                                    hover:from-red-500 hover:to-rose-500
                                     text-white font-bold rounded-xl
-                                    shadow-lg shadow-blue-500/20
+                                    shadow-lg shadow-red-900/30
                                     transition-all duration-200
                                     flex items-center justify-center gap-2 py-3.5
-                                    ${loading ? 'opacity-70 cursor-not-allowed' : 'active:scale-[0.99] hover:shadow-blue-500/30 hover:shadow-xl'}
+                                    ${loading ? 'opacity-70 cursor-not-allowed' : 'active:scale-[0.99] hover:shadow-red-900/50 hover:shadow-xl'}
                                 `}
                             >
                                 {loading ? (
@@ -184,7 +181,7 @@ const Home = () => {
                     </div>
 
                     {/* Footer hint */}
-                    <p className="text-center text-[11px] text-slate-700 mt-6">
+                    <p className="text-center text-[11px] text-zinc-500 mt-6">
                         Reports are personalized using AI. All data is processed securely.
                     </p>
                 </div>
