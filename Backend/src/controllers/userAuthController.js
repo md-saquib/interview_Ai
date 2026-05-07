@@ -49,8 +49,8 @@ const RegisterUser = async (req, res) => {
                 // token genrator
                 res.cookie("token", tokenGenrator(user._id), {
                     httpOnly: true,
-                    secure: false,       // Local pe HTTP hai, HTTPS nahi — isliye false
-                    sameSite: 'lax',     // Cross-origin cookie allow karta hai
+                    secure: process.env.NODE_ENV === 'production',   // HTTPS pe true, local pe false
+                    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',  // Cross-site ke liye 'none' chahiye
                     maxAge: 1000 * 60 * 60 * 24 * 7
                 })
 
@@ -107,8 +107,8 @@ const LoginUser = async (req, res) => {
         const token = tokenGenrator(user._id);
         res.cookie("token", token, {
             httpOnly: true,
-            secure: false,       // Local pe HTTP hai — secure:true sirf HTTPS pe kaam karta hai
-            sameSite: 'lax',     // 'strict' cross-origin block karta tha (5173 → 3000)
+            secure: process.env.NODE_ENV === 'production',   // HTTPS pe true, local pe false
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',  // Cross-site ke liye 'none' chahiye
             maxAge: 1000 * 60 * 60 * 24 * 7
         });
 

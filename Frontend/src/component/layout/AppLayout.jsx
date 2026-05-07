@@ -9,6 +9,10 @@ const AppLayout = ({ children }) => {
     const { tittles, userData, clearSession } = useInterview();
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
+    // check if not login then login first
+    // if (!userData) navigate('/login')
+
+
     const handleLogout = async () => {
         // 1. Immediately wipe all user-specific state from React context
         clearSession();

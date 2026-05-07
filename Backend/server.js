@@ -11,8 +11,8 @@ connectDB();
 const cors = require('cors');
 app.use(cors({
     // IMPORTANT: origin: "*" aur credentials: true saath kaam nahi karta (browser block karta hai)
-    // Isliye apna React frontend ka exact origin daal
-    origin: ["https://job-interview-ai.netlify.app", "http://localhost:5173"],
+    // Isliye apna React frontend ka exact origin daal (local + production dono)
+    origin: ["http://localhost:5173", "https://job-interview-ai.netlify.app"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"]
