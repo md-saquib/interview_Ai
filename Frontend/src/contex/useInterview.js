@@ -61,13 +61,20 @@ export const useInterview = () => {
 
     useEffect(() => {
         if (InterviewId) {
+            // Always fetch report if we have an ID (or we could cache it, but let's be safe for now)
             getReportById();
-            getCurrentUser();
-
         } else {
-            getAllReports();
+            // Only fetch all reports if we don't have them in context yet
+            if (!tittles) {
+                getAllReports();
+            }
+        }
+
+        // Only fetch user profile if we don't have it in context yet
+        if (!userData) {
             getCurrentUser();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [InterviewId]);
 
     return { setInterviewReport, interviewReport, loading, setLoading, tittles, setTittles, userData, setUserData, clearSession, getReportById, getAllReports };

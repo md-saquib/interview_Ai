@@ -16,10 +16,9 @@ const Home = () => {
 
     // For model selection
     const GEMINI_MODELS = [
-        { id: "gemini-2.5-flash", name: "Gemini 2.5 Flash (Fastest)", description: "Best for quick analysis" },
+        { id: "gemini-2.5-flash", name: "Gemini 2.5 Flash (Fastest)", description: "Best for quick analysis" }
     ];
     const [selectedModel, setSelectedModel] = useState(GEMINI_MODELS[0].id);
-    console.log(selectedModel);
 
     // API Call by user  
     const handleGenerate = async (e) => {

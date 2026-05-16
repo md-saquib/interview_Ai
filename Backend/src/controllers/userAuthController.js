@@ -151,7 +151,7 @@ const getCurrentUser = async (req, res) => {
         }
 
         const user = await userAuthModel.findById(req.user.id)
-            .select("-password -createdAt -updatedAt -email -__v");
+            .select("-password -createdAt -updatedAt -__v");
 
         if (!user) {
             return res.status(404).json({
